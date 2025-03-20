@@ -67,3 +67,17 @@ L'application démarre par défaut sur http://localhost:8080
 
 ## Base de données
 La base de données est en mémoire (H2) et se réinitialise à chaque redémarrage.
+
+
+## Postman Collection
+
+Pour faciliter les tests de l'API, vous pouvez importer une collection Postman préconfigurée.
+
+### **Téléchargement**
+📌 **[Télécharger la collection Postman](https://github.com/xLillium/kata-natixis-backend/raw/main/Kata%20Natixis.postman_collection.json)**
+
+### **Importer dans Postman**
+1.  **Ouvrir Postman**  
+2. Aller dans **Fichier → Importer**  
+3. Sélectionner le fichier `Kata-Natixis.postman_collection.json`  
+4. Tester les requêtes 

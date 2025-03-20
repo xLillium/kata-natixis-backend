@@ -1,0 +1,821 @@
+{
+	"info": {
+		"_postman_id": "6050c7c7-0b8f-417d-bbfd-0152a5bf1848",
+		"name": "Kata Natixis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25995070"
+	},
+	"item": [
+		{
+			"name": "Get all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/books",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Mar 2025 14:57:09 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"1984\",\n        \"author\": \"George Orwell\",\n        \"isbn\": \"9780155658110\",\n        \"borrowed\": true\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Clean Code\",\n        \"author\": \"Robert C. Martin\",\n        \"isbn\": \"9780132350884\",\n        \"borrowed\": false\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Software craft: TDD, Clean Code et autres pratiques essentielles\",\n        \"author\": \"Cyrille Martraire\",\n        \"isbn\": \"2100825208\",\n        \"borrowed\": false\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Implementing Domain-Driven Design\",\n        \"author\": \"Vaughn Vernon\",\n        \"isbn\": \"9780321834577\",\n        \"borrowed\": false\n    },\n    {\n        \"id\": 5,\n        \"title\": \"Title\",\n        \"author\": \"Author\",\n        \"isbn\": \"1234567890\",\n        \"borrowed\": false\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/books",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"books"
+					],
+					"query": [
+						{
+							"key": "toto",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "toto",
+							"value": "fdsfsdf",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author\": \"Author\",\r\n    \"title\": \"Title\",\r\n    \"isbn\": \"1234567890\",\r\n    \"borrowed\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/books",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "201 Created",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"author\": \"Author\",\r\n    \"title\": \"Title\",\r\n    \"isbn\": \"1234567890\",\r\n    \"borrowed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Mar 2025 14:48:43 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 5,\n    \"title\": \"Title\",\n    \"author\": \"Author\",\n    \"isbn\": \"1234567890\",\n    \"borrowed\": false\n}"
+				},
+				{
+					"name": "409 Conflict",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"author\": \"Author\",\r\n    \"title\": \"Title\",\r\n    \"isbn\": \"9780155658110\",\r\n    \"borrowed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Mar 2025 14:50:21 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2025-03-20T15:50:21.8782094\",\n    \"status\": 409,\n    \"error\": \"Conflict\",\n    \"message\": \"A book with ISBN 9780155658110 already exists.\",\n    \"path\": \"/api/books\"\n}"
+				},
+				{
+					"name": "400 Missing Mandatory Fields",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Mar 2025 14:54:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2025-03-20T15:54:13.3562104\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Validation failed. See 'details' for more informations.\",\n    \"path\": \"/api/books\",\n    \"details\": [\n        {\n            \"message\": \"Borrowed status is mandatory\",\n            \"field\": \"borrowed\"\n        },\n        {\n            \"message\": \"ISBN is mandatory\",\n            \"field\": \"isbn\"\n        },\n        {\n            \"message\": \"Author is mandatory\",\n            \"field\": \"author\"\n        },\n        {\n            \"message\": \"Title is mandatory\",\n            \"field\": \"title\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "400 Unrecognized field",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"author\": \"Author\",\r\n    \"title\": \"Title\",\r\n    \"isbn\": \"1234567890\",\r\n    \"borrowed\": false,\r\n    \"test\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Mar 2025 14:54:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2025-03-20T15:54:56.1262772\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"The request body is missing or malformed.\",\n    \"path\": \"/api/books\",\n    \"details\": [\n        {\n            \"message\": \"Unrecognized field\",\n            \"field\": \"test\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "400 Bad Format",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"author\": \"Author\",\r\n    \"title\": \"Title\",\r\n    \"isbn\": \"1234567890\",\r\n    \"borrowed\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Mar 2025 14:56:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2025-03-20T15:56:10.3141923\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Invalid value for field(s).\",\n    \"path\": \"/api/books\",\n    \"details\": [\n        {\n            \"message\": \"Invalid format. Expected a Boolean\",\n            \"field\": \"borrowed\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Borrowed Status",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"borrowed\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/books/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"borrowed\": \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/books/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Mar 2025 17:41:10 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"title\": \"1984\",\n    \"author\": \"George Orwell\",\n    \"isbn\": \"9780155658110\",\n    \"borrowed\": false\n}"
+				},
+				{
+					"name": "404 Not Found",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"borrowed\": \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/books/100",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books",
+								"100"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Mar 2025 17:41:30 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2025-03-20T18:41:30.8761664\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"message\": \"Book not found with ID: 100\",\n    \"path\": \"/api/books/100\"\n}"
+				},
+				{
+					"name": "400 Missing Mandatory Fields",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/books/100",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books",
+								"100"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Mar 2025 17:42:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2025-03-20T18:42:03.8392642\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Validation failed. See 'details' for more informations.\",\n    \"path\": \"/api/books/100\",\n    \"details\": [\n        {\n            \"message\": \"Borrowed status is mandatory.\",\n            \"field\": \"borrowed\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "400 Unrecognized Field",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"unkown\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/books/100",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books",
+								"100"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Mar 2025 17:42:35 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2025-03-20T18:42:35.3452625\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"The request body is missing or malformed.\",\n    \"path\": \"/api/books/100\",\n    \"details\": [\n        {\n            \"message\": \"Unrecognized field\",\n            \"field\": \"unkown\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "400 Bad Format",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"borrowed\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/books/100",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books",
+								"100"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Mar 2025 17:43:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2025-03-20T18:43:03.3093203\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"The request body is missing or malformed.\",\n    \"path\": \"/api/books/100\",\n    \"details\": [\n        {\n            \"message\": \"Invalid format. Expected a Boolean\",\n            \"field\": \"borrowed\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "400 ID Must not be provided",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"borrowed\": true,\r\n    \"id\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/books/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books",
+								"1"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Mar 2025 17:43:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2025-03-20T18:43:55.8132587\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Validation failed. See 'details' for more informations.\",\n    \"path\": \"/api/books/1\",\n    \"details\": [\n        {\n            \"message\": \"ID must not be provided\",\n            \"field\": \"id\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "400 Fields must not be provided",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"author\": \"Author\",\r\n    \"title\": \"Title\",\r\n    \"isbn\": \"1234567890\",\r\n    \"borrowed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/books/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books",
+								"1"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 20 Mar 2025 17:44:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2025-03-20T18:44:38.0442575\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"Validation failed. See 'details' for more informations.\",\n    \"path\": \"/api/books/1\",\n    \"details\": [\n        {\n            \"message\": \"ISBN must not be provided when updating a book\",\n            \"field\": \"isbn\"\n        },\n        {\n            \"message\": \"Title must not be provided when updating a book\",\n            \"field\": \"title\"\n        },\n        {\n            \"message\": \"Title must not be provided when updating a book\",\n            \"field\": \"author\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}
