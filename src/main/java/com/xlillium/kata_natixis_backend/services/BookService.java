@@ -1,9 +1,11 @@
 package com.xlillium.kata_natixis_backend.services;
 
 import com.xlillium.kata_natixis_backend.dtos.BookDTO;
+import com.xlillium.kata_natixis_backend.exceptions.DuplicateIsbnException;
 import com.xlillium.kata_natixis_backend.mappers.BookMapper;
 import com.xlillium.kata_natixis_backend.models.Book;
 import com.xlillium.kata_natixis_backend.repositories.BookRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,5 +44,16 @@ public class BookService {
         return results.stream()
                 .map(bookMapper::toDto)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public BookDTO createBook(BookDTO bookDTO) {
+        if (bookRepository.existsByIsbn(bookDTO.isbn())) {
+            throw new DuplicateIsbnException(bookDTO.isbn());
+        }
+
+        Book book = bookMapper.toEntity(bookDTO);
+        Book savedBook = bookRepository.save(book);
+        return bookMapper.toDto(savedBook);
     }
 }

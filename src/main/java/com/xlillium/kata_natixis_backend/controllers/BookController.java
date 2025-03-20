@@ -2,10 +2,9 @@ package com.xlillium.kata_natixis_backend.controllers;
 
 import com.xlillium.kata_natixis_backend.dtos.BookDTO;
 import com.xlillium.kata_natixis_backend.services.BookService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +23,11 @@ public class BookController {
             @RequestParam(required = false) String author
     ) {
         return bookService.searchBooks(title, author);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public BookDTO createBook(@Validated @RequestBody BookDTO bookDTO) {
+        return bookService.createBook(bookDTO);
     }
 }

@@ -1,7 +1,4 @@
-package com.xlillium.kata_natixis.exceptions;
-
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
+package com.xlillium.kata_natixis_backend.exceptions;
 
 public class DuplicateIsbnException extends RuntimeException {
     public DuplicateIsbnException(String isbn) {
