@@ -1,6 +1,7 @@
 package com.xlillium.kata_natixis_backend.services;
 
 import com.xlillium.kata_natixis_backend.dtos.BookDTO;
+import com.xlillium.kata_natixis_backend.exceptions.BookNotFoundException;
 import com.xlillium.kata_natixis_backend.exceptions.DuplicateIsbnException;
 import com.xlillium.kata_natixis_backend.mappers.BookMapper;
 import com.xlillium.kata_natixis_backend.models.Book;
@@ -55,5 +56,16 @@ public class BookService {
         Book book = bookMapper.toEntity(bookDTO);
         Book savedBook = bookRepository.save(book);
         return bookMapper.toDto(savedBook);
+    }
+
+    @Transactional
+    public BookDTO updateBook(Long bookId, BookDTO bookDTO) {
+        Book existingBook = bookRepository.findById(bookId)
+                .orElseThrow(() -> new BookNotFoundException(bookId));
+
+        bookMapper.patchEntityWithDto(bookDTO, existingBook);
+        Book updatedBook = bookRepository.save(existingBook);
+
+        return bookMapper.toDto(updatedBook);
     }
 }

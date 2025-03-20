@@ -134,7 +134,7 @@ public class BookControllerTest extends BaseIntegrationTest {
                                 """))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.details[0].field").value("id"))
-                .andExpect(jsonPath("$.details[0].message").value("ID must not be provided for a new book"));
+                .andExpect(jsonPath("$.details[0].message").value("ID must not be provided"));
     }
 
     @Test

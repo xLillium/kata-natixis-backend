@@ -1,3 +1,3 @@
-package com.xlillium.kata_natixis.validation;
+package com.xlillium.kata_natixis_backend.validation;
 
 public interface OnPatch {}

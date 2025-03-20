@@ -3,6 +3,7 @@ package com.xlillium.kata_natixis_backend;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
+import com.xlillium.kata_natixis_backend.exceptions.BookNotFoundException;
 import com.xlillium.kata_natixis_backend.exceptions.DuplicateIsbnException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,6 +58,11 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(DuplicateIsbnException.class)
     public ResponseEntity<Object> handleDuplicateIsbnException(DuplicateIsbnException ex, WebRequest request) {
         return buildErrorResponse(request, HttpStatus.CONFLICT, ex.getMessage(), null);
+    }
+
+    @ExceptionHandler(BookNotFoundException.class)
+    public ResponseEntity<Object> handleBookNotFoundException(BookNotFoundException ex, WebRequest request) {
+        return buildErrorResponse(request, HttpStatus.NOT_FOUND, ex.getMessage(), null);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
