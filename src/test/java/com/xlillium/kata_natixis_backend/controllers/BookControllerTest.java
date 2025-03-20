@@ -1,6 +1,7 @@
 package com.xlillium.kata_natixis_backend.controllers;
 
 import com.xlillium.kata_natixis_backend.BaseIntegrationTest;
+import com.xlillium.kata_natixis_backend.repositories.BookRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -8,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -15,6 +17,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc
 public class BookControllerTest extends BaseIntegrationTest {
+    @Autowired
+    private BookRepository bookRepository;
     @Autowired
     private MockMvc mockMvc;
 
@@ -170,5 +174,55 @@ public class BookControllerTest extends BaseIntegrationTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.message").value("The request body is missing or malformed."))
                 .andExpect(jsonPath("$.details").isArray());
+    }
+
+    @Test
+    void testPatchBook_Success() throws Exception {
+        Long bookId = bookRepository.findAll().get(0).getId();
+        mockMvc.perform(patch("/api/books/" + bookId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {
+                                  "borrowed": true
+                                }
+                            """))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.borrowed").value(true));
+    }
+
+    @Test
+    void testPatchBook_NotFound() throws Exception {
+        mockMvc.perform(patch("/api/books/999")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {
+                                  "borrowed": true
+                                }
+                            """))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message").value("Book not found with ID: 999"));
+    }
+
+    @Test
+    void testPatchBook_InvalidField() throws Exception {
+        mockMvc.perform(patch("/api/books/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {
+                                  "isbn": "1234567890"
+                                }
+                            """))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message").value("Validation failed. See 'details' for more informations."));
+    }
+
+    @Test
+    void testPatchBook_NoFieldsProvided() throws Exception {
+        mockMvc.perform(patch("/api/books/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{}"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message").value("Validation failed. See 'details' for more informations."))
+                .andExpect(jsonPath("$.details[0].message").value("Borrowed status is mandatory."));
     }
 }

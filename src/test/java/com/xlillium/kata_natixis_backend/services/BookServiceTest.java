@@ -1,6 +1,7 @@
 package com.xlillium.kata_natixis_backend.services;
 
 import com.xlillium.kata_natixis_backend.dtos.BookDTO;
+import com.xlillium.kata_natixis_backend.exceptions.BookNotFoundException;
 import com.xlillium.kata_natixis_backend.mappers.BookMapper;
 import com.xlillium.kata_natixis_backend.models.Book;
 import com.xlillium.kata_natixis_backend.repositories.BookRepository;
@@ -11,8 +12,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -83,4 +86,13 @@ public class BookServiceTest {
 
         verify(bookRepository).findAll();
     }
+
+    @Test
+    void testUpdateBook_NotFound() {
+        when(bookRepository.findById(1L)).thenReturn(Optional.empty());
+        BookDTO dto = new BookDTO(null, null, null, null, true);
+
+        assertThrows(BookNotFoundException.class, () -> bookService.updateBook(1L, dto));
+    }
+
 }
