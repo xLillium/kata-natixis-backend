@@ -14,9 +14,9 @@ L'objectif est de développer une petite application de gestion de bibliothèque
 
 ## Prérequis
 
-- **Java 17** 
-- **Maven** 
- 
+- **Java 17**
+- **Maven**
+
 ## Lancement du projet
 
 1. **Cloner** le dépôt :
@@ -30,3 +30,40 @@ L'objectif est de développer une petite application de gestion de bibliothèque
     mvn spring-boot:run
 
 L'application démarre par défaut sur http://localhost:8080
+
+## Endpoints disponibles
+
+| Méthode   | Endpoint                                   | Description                                        |
+|-----------|--------------------------------------------|----------------------------------------------------|
+| **GET**   | `/api/books`                               | Liste tous les livres                              |
+| **GET**   | `/api/books?title={title}&author={author}` | Recherche un livre par titre et/ou auteur          |
+| **POST**  | `/api/books`                               | Ajoute un nouveau livre                            |
+| **PATCH** | `/api/books/{bookId}`                      | Emprunte ou retourne un livre (modifie `borrowed`) |
+
+### **Exemples d'utilisation**
+
+#### **Rechercher un livre par titre**
+
+   ```bash
+   curl -X GET "http://localhost:8080/api/books?title=1984"
+   ``` 
+
+#### **Emprunter un livre**
+
+   ```bash
+   curl -X PATCH "http://localhost:8080/api/books/1" -H "Content-Type: application/json" -d '{"borrowed": true}'   ``` 
+   ```
+
+#### **Ajouter un livre**
+
+   ```bash
+   curl -X POST "http://localhost:8080/api/books" -H "Content-Type: application/json" -d '{
+     "title": "Le Petit Prince",
+     "author": "Antoine de Saint-Exupéry",
+     "isbn": "9782070408504",
+      "borrowed": false
+   }'
+   ```
+
+## Base de données
+La base de données est en mémoire (H2) et se réinitialise à chaque redémarrage.
