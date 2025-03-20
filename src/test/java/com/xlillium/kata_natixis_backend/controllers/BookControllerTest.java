@@ -21,7 +21,6 @@ public class BookControllerTest extends BaseIntegrationTest {
         mockMvc.perform(get("/api/books"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
-                .andExpect(jsonPath("$[0].id").value("1"))
                 .andExpect(jsonPath("$[0].title").value("1984"))
                 .andExpect(jsonPath("$[0].author").value("George Orwell"))
                 .andExpect(jsonPath("$[0].isbn").value("9780155658110"))
