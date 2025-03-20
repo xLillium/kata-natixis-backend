@@ -14,7 +14,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class BookServiceTest {
@@ -50,5 +50,37 @@ public class BookServiceTest {
 
         assertThat(result).hasSize(2);
         assertThat(result).containsExactlyElementsOf(expectedDTOs);
+    }
+
+    @Test
+    void testSearchBooks_ByTitleOnly() {
+        bookService.searchBooks("java", null);
+
+        verify(bookRepository).findByTitleContainingIgnoreCase(eq("java"));
+        verify(bookRepository, never()).findByAuthorContainingIgnoreCase(anyString());
+        verify(bookRepository, never()).findByTitleContainingIgnoreCaseAndAuthorContainingIgnoreCase(anyString(), anyString());
+    }
+
+    @Test
+    void testSearchBooks_ByAuthorOnly() {
+        bookService.searchBooks(null, "martin");
+
+        verify(bookRepository).findByAuthorContainingIgnoreCase(eq("martin"));
+        verify(bookRepository, never()).findByTitleContainingIgnoreCase(anyString());
+        verify(bookRepository, never()).findByTitleContainingIgnoreCaseAndAuthorContainingIgnoreCase(anyString(), anyString());
+    }
+
+    @Test
+    void testSearchBooks_ByTitleAndAuthor() {
+        bookService.searchBooks("java", "bloch");
+
+        verify(bookRepository).findByTitleContainingIgnoreCaseAndAuthorContainingIgnoreCase("java", "bloch");
+    }
+
+    @Test
+    void testSearchBooks_NoneProvided() {
+        bookService.searchBooks(null, null);
+
+        verify(bookRepository).findAll();
     }
 }
